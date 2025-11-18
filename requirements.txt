@@ -1,0 +1,16 @@
+# UML split and filtering system - Python dependencies
+
+# Graph analysis and processing
+networkx>=3.0
+python-louvain>=0.16
+
+# Configuration file parsing
+pyyaml>=6.0
+
+# Data processing and numerical computation
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Optional: visualization (for debugging)
+matplotlib>=3.7.0
+

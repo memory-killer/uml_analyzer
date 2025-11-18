@@ -1,0 +1,72 @@
+# UML processor configuration file
+
+# Input settings
+input:
+  json_file: "test_project/output/app_class_diagram.json"
+  # Or multiple files:
+  # json_files:
+  #   - "path/to/diagram1.json"
+  #   - "path/to/diagram2.json"
+
+# Output settings
+output:
+  directory: "output/views"
+  generate_svg: true  # Generate SVG via PlantUML
+  plantuml_jar: "~/bin/plantuml.jar"  # Path to PlantUML jar
+  generate_index: true  # Generate HTML index
+
+# View generation strategies
+views:
+  # Namespace-based views
+  namespace:
+    enabled: true
+    min_nodes: 2  # Minimum number of nodes
+    
+  # Community-based views
+  community:
+    enabled: true
+    min_size: 3  # Minimum community size
+    resolution: 1.0  # Louvain algorithm resolution
+  
+  # Hotspot view
+  hotspot:
+    enabled: true
+    min_degree: 5  # Minimum degree
+    min_complexity: 10  # Minimum complexity
+    include_neighbors: true
+  
+  # Importance-based view
+  importance:
+    enabled: true
+    top_n: 15
+    metric: "pagerank"  # pagerank, betweenness, degree
+    include_neighbors: true
+  
+  # Context view (around specific classes)
+  context:
+    enabled: false
+    # When enabled, configure the following:
+    center_classes:
+      - name: "UserService"
+        max_hops: 2
+        direction: "both"  # in, out, both
+  
+  # Layered architecture views
+  layer:
+    enabled: true
+    layers:
+      api: "app::api"
+      service: "app::service"
+      core: "app::core"
+
+# Diagram display options
+diagram:
+  show_members: true
+  show_methods: true
+  group_by_namespace: true
+
+# Analysis options
+analysis:
+  generate_report: true  # Generate analysis report
+  report_format: "markdown"  # markdown, json
+
